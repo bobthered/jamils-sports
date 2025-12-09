@@ -3,6 +3,9 @@ export const theme = {
 		default: 'mx-auto w-full max-w-7xl px-6',
 		full: 'max-w-none'
 	},
+	Div: {
+		default: ''
+	},
 	H1: {
 		default: 'text-6xl font-semibold'
 	},
