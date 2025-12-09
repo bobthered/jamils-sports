@@ -2,6 +2,9 @@ export const theme = {
 	A: {
 		default: ''
 	},
+	Button: {
+		default: 'px-6 py-3 rounded bg-primary-500 text-white'
+	},
 	Container: {
 		default: 'mx-auto w-full max-w-7xl px-6',
 		full: 'max-w-none'

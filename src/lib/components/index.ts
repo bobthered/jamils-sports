@@ -1,4 +1,5 @@
 export { default as A } from './A/A.svelte';
+export { default as Button } from './Button/Button.svelte';
 export { default as Container } from './Container/Container.svelte';
 export { default as Div } from './Div/Div.svelte';
 export { default as H1 } from './H1/H1.svelte';
