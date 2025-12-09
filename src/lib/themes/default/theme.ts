@@ -1,4 +1,7 @@
 export const theme = {
+	A: {
+		default: ''
+	},
 	Container: {
 		default: 'mx-auto w-full max-w-7xl px-6',
 		full: 'max-w-none'
