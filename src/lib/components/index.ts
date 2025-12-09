@@ -3,4 +3,5 @@ export { default as Div } from './Div/Div.svelte';
 export { default as H1 } from './H1/H1.svelte';
 export { default as Header } from './Header/Header.svelte';
 export { default as Img } from './Img/Img.svelte';
+export { default as P } from './P/P.svelte';
 export { default as Section } from './Section/Section.svelte';

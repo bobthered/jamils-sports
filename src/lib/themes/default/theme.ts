@@ -13,6 +13,7 @@ export const theme = {
 		default: 'bg-white dark:bg-gray-900 fixed top-0 w-screen z-100'
 	},
 	Img: { default: '' },
+	P: { default: '' },
 	Section: {
 		default: 'py-24'
 	}
