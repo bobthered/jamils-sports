@@ -5,5 +5,8 @@ export const theme = {
 	},
 	Header: {
 		default: 'bg-white dark:bg-gray-900 fixed top-0 w-screen'
+	},
+	Section: {
+		default: 'py-24'
 	}
 };
