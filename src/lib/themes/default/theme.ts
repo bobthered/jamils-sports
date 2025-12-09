@@ -4,8 +4,9 @@ export const theme = {
 		full: 'max-w-none'
 	},
 	Header: {
-		default: 'bg-white dark:bg-gray-900 fixed top-0 w-screen'
+		default: 'bg-white dark:bg-gray-900 fixed top-0 w-screen z-100'
 	},
+	Img: { default: '' },
 	Section: {
 		default: 'py-24'
 	}
