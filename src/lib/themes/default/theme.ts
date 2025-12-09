@@ -1,9 +1,15 @@
-export const theme = {
+const theme: Record<string, Record<string, string>> = {
 	A: {
 		default: ''
 	},
 	Button: {
-		default: 'px-6 py-3 rounded bg-primary-500 text-white'
+		default:
+			'px-6 py-3 rounded bg-primary-500 text-white hover:bg-primary-600 focus:bg-primary-700 transition duration-200',
+		ghost:
+			'bg-transparent text-current hover:bg-black/10 focus:bg-black/10 dark:hover:bg-white/10 focus:bg-white/10',
+		icon: 'px-3',
+		light: 'bg-gray-50 text-gray-950 hover:bg-white focus:bg-white',
+		square: 'rounded-none'
 	},
 	Container: {
 		default: 'mx-auto w-full max-w-7xl px-6',
@@ -15,12 +21,23 @@ export const theme = {
 	H1: {
 		default: 'text-6xl font-semibold'
 	},
+	H2: {
+		default: 'text-5xl font-semibold'
+	},
 	Header: {
-		default: 'bg-white dark:bg-gray-900 fixed top-0 w-screen z-100'
+		default: 'bg-white/90 backdrop-blur dark:bg-gray-950/95 fixed top-0 w-screen z-100'
 	},
 	Img: { default: '' },
+	Nav: { default: '' },
 	P: { default: '' },
 	Section: {
-		default: 'py-24'
+		default: 'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32',
+		lg: 'py-24 sm:py-32 md:py-40 lg:py-48 xl:py-56'
 	}
 };
+
+Object.keys(theme.Button).forEach((key) => {
+	theme.A[`button${key[0].toUpperCase() + key.slice(1)}`] = theme.Button[key];
+});
+
+export { theme };
