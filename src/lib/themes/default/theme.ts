@@ -1,1 +1,5 @@
-export const theme = {};
+export const theme = {
+	Header: {
+		default: 'bg-white dark:bg-gray-900'
+	}
+};
