@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { Mail, Phone } from '@lucide/svelte';
 	import { slide } from 'svelte/transition';
 	import { twMerge } from 'tailwind-merge';
 	import favicon from '$lib/assets/favicon.svg';
-	import { A, Button, Container, Div, Header, Nav } from '$lib/components';
+	import { A, Button, Container, Div, Footer, H6, Header, Nav } from '$lib/components';
 	import '../app.css';
 
 	// $props
@@ -16,8 +17,7 @@
 			href: `/${label.toLowerCase().split(' ').join(' ')}`,
 			label,
 			variants: ['buttonDefault', 'buttonGhost']
-		})),
-		{ class: 'text-center', href: '/sign-up', label: 'Sign Up', variants: ['buttonDefault'] }
+		}))
 	]);
 	let windowOuterWidth = $state(0);
 </script>
@@ -30,7 +30,7 @@
 
 <Header>
 	<Container class="flex items-center justify-between py-3" variants={['full']}>
-		<A href="/" variants={['buttonDefault', 'buttonGhost']}>Logo</A>
+		<A class="-ml-6" href="/" variants={['buttonDefault', 'buttonGhost']}>Logo</A>
 		<Button
 			onclick={() => (isNavOpen = !isNavOpen)}
 			isVisible={windowOuterWidth < 768}
@@ -55,6 +55,7 @@
 			{#each navItems as { href, label, variants }}
 				<A class="px-6 py-3" {href} {variants}>{label}</A>
 			{/each}
+			<A class="px-6 py-3" href="/sign-up" variants={['buttonDefault']}>Sign Up</A>
 		</Nav>
 	</Container>
 	<Nav
@@ -66,7 +67,35 @@
 			{#each navItems as { class: className, href, label, variants }}
 				<A class={className} {href} {variants}>{label}</A>
 			{/each}
+			<A class="text-center" href="/sign-up" variants={['buttonDefault']}>Sign Up</A>
 		</Container>
 	</Nav>
 </Header>
 {@render children()}
+<Footer>
+	<Container>
+		<Div class="flex flex-col space-y-6 md:grid md:grid-cols-3 md:gap-6 md:space-y-0">
+			<Div class="flex flex-col space-y-3">
+				<A class="-ml-6" href="/" variants={['buttonDefault', 'buttonGhost']}>Logo</A>
+				<Div class="opacity-70">Building champions on and off the court since 2025</Div>
+			</Div>
+			<Div class="flex flex-col space-y-3">
+				<H6>Quick Links</H6>
+				<Div class="flex flex-col opacity-70">
+					{#each navItems as { href, label }}
+						<A class="text-current" {href}>{label}</A>
+					{/each}
+				</Div>
+			</Div>
+			<Div class="flex flex-col space-y-3">
+				<H6>Contact</H6>
+				<Div class="grid grid-cols-[fit-content(0px)_1fr] gap-x-2 gap-y-4 opacity-70">
+					<Phone />
+					<Div>(555) 123-4567</Div>
+					<Mail />
+					<A class="text-current" href="mailto:info@jamilsleague.com">info@jamilsleague.com</A>
+				</Div>
+			</Div>
+		</Div>
+	</Container>
+</Footer>

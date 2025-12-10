@@ -38,7 +38,7 @@ const theme: Record<string, Record<string, string>> = {
 		default: ''
 	},
 	Footer: {
-		default: ''
+		default: 'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32'
 	},
 	H1: {
 		default: 'text-6xl font-semibold'

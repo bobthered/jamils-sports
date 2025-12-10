@@ -40,6 +40,31 @@
 			team2: 'Rockets'
 		}
 	]);
+	const news = $state(
+		[
+			{
+				body: 'The Thunder dominated the Warriors in a thrilling overtime victory, extending their winning streak to seven consecutive games.',
+				date: 'December 10, 2025',
+				imageSrc: 'https://images.pexels.com/photos/1331750/pexels-photo-1331750.jpeg',
+				title: 'Thunder Extends Winning Streak to 7 Games'
+			},
+			{
+				body: 'Three players are neck-and-neck in the race for league MVP as the regular season enters its final stretch.',
+				date: 'December 9, 2025',
+				imageSrc: 'https://images.pexels.com/photos/945471/pexels-photo-945471.jpeg',
+				title: 'MVP Race Heats Up in Final Weeks'
+			},
+			{
+				body: 'With only three weeks remaining in the regular season, teams are jockeying for playoff positioning.',
+				date: 'December 8, 2025',
+				imageSrc: 'https://images.pexels.com/photos/1293265/pexels-photo-1293265.jpeg',
+				title: 'Playoff Picture Taking Shape'
+			}
+		].map(({ body, date, imageSrc, title }) => {
+			const href = `/news/${title.toLowerCase().split(' ').join('-')}`;
+			return { body, date, href, imageSrc, title };
+		})
+	);
 	const teams = $state(
 		[
 			{
@@ -110,7 +135,9 @@
 			<H2>Featured Games This Week</H2>
 			<Div class="flex flex-col space-y-6 lg:grid lg:grid-cols-3 lg:gap-6 lg:space-y-0">
 				{#each featuredGames as { date, headerClasses, team1, team2 }}
-					<Card class="flex flex-col overflow-hidden p-0">
+					<Card
+						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105"
+					>
 						<Div class={twMerge('bg-linear-to-r px-6 py-3 text-left text-white', headerClasses)}>
 							{date}
 						</Div>
@@ -140,7 +167,9 @@
 				class="flex flex-col space-y-6 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 md:grid-cols-3"
 			>
 				{#each teams as { href, imageSrc, losses, name, wins }}
-					<Card class="flex flex-col overflow-hidden p-0">
+					<Card
+						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105"
+					>
 						<Img alt={name} class="h-40 w-full object-cover lg:h-56" src={imageSrc} />
 						<Div class="flex flex-col space-y-3 p-6 text-left dark:bg-gray-800">
 							<Div class="flex flex-col">
@@ -186,6 +215,31 @@
 					</Tbody>
 				</Table>
 			</Card>
+		</Div>
+	</Container>
+</Section>
+
+<Section class="bg-gray-100 text-center dark:bg-gray-900">
+	<Container>
+		<Div class="flex flex-col space-y-12">
+			<H2>Latest News</H2>
+			<Div
+				class="flex flex-col space-y-6 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 md:grid-cols-3"
+			>
+				{#each news as { body, date, href, imageSrc, title }}
+					<Card
+						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105"
+					>
+						<Img alt={title} class="h-40 w-full object-cover lg:h-56" src={imageSrc} />
+						<Div class="flex grow flex-col space-y-3 p-6 text-left dark:bg-gray-800">
+							<Div class="text-sm text-primary-500">{date}</Div>
+							<Div class="text-xl font-semibold">{title}</Div>
+							<Div class="grow opacity-70">{body}</Div>
+							<A {href}>Read More</A>
+						</Div>
+					</Card>
+				{/each}
+			</Div>
 		</Div>
 	</Container>
 </Section>
