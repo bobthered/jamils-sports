@@ -17,6 +17,7 @@
 		Tr
 	} from '$lib/components';
 	import { theme } from '$lib/theme';
+	import Td from '$lib/components/Td/Td.svelte';
 
 	// $state
 	const featuredGames = $state([
@@ -173,7 +174,14 @@
 					</Thead>
 					<Tbody>
 						{#each teams as { losses, name, wins }, index}
-							<Tr></Tr>
+							<Tr>
+								<Td>{index + 1}</Td>
+								<Td>{name}</Td>
+								<Td>{wins}</Td>
+								<Td>{losses}</Td>
+								<Td>{(wins / (losses + wins)).toFixed(3)}</Td>
+								<Td>{(12 - wins).toFixed(1)}</Td>
+							</Tr>
 						{/each}
 					</Tbody>
 				</Table>
