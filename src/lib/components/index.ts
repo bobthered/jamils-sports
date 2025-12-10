@@ -10,3 +10,4 @@ export { default as Img } from './Img/Img.svelte';
 export { default as Nav } from './Nav/Nav.svelte';
 export { default as P } from './P/P.svelte';
 export { default as Section } from './Section/Section.svelte';
+export { default as Table } from './Table/Table.svelte';

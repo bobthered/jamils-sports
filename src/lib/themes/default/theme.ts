@@ -48,6 +48,9 @@ const theme: Record<string, Record<string, string>> = {
 	Section: {
 		default: 'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32',
 		lg: 'py-24 sm:py-32 md:py-40 lg:py-48 xl:py-56'
+	},
+	Table: {
+		default: ''
 	}
 };
 
