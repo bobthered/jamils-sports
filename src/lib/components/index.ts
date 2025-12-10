@@ -11,6 +11,7 @@ export { default as Nav } from './Nav/Nav.svelte';
 export { default as P } from './P/P.svelte';
 export { default as Section } from './Section/Section.svelte';
 export { default as Table } from './Table/Table.svelte';
+export { default as Tbody } from './Tbody/Tbody.svelte';
 export { default as Th } from './Th/Th.svelte';
 export { default as Thead } from './Thead/Thead.svelte';
 export { default as Tr } from './Tr/Tr.svelte';

@@ -1,21 +1,22 @@
 <script lang="ts">
+	import { twMerge } from 'tailwind-merge';
 	import {
 		A,
 		Card,
 		Container,
 		Div,
 		H1,
+		H2,
 		Img,
 		P,
 		Section,
 		Table,
+		Tbody,
 		Th,
 		Thead,
 		Tr
 	} from '$lib/components';
-	import H2 from '$lib/components/H2/H2.svelte';
 	import { theme } from '$lib/theme';
-	import { twMerge } from 'tailwind-merge';
 
 	// $state
 	const featuredGames = $state([
@@ -170,6 +171,11 @@
 							<Th>GB</Th>
 						</Tr>
 					</Thead>
+					<Tbody>
+						{#each teams as { losses, name, wins }, index}
+							<Tr></Tr>
+						{/each}
+					</Tbody>
 				</Table>
 			</Card>
 		</Div>
