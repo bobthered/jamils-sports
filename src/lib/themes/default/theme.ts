@@ -55,6 +55,7 @@ const theme: Record<string, Record<string, string>> = {
 	},
 	Card: {
 		default: twMerge(rounded, shadow, 'bg-white dark:bg-gray-900 p-6'),
+		light: 'dark:bg-white dark:text-slate-950',
 		orangeToRed:
 			'bg-linear-to-br from-primary-500 to-red-500 selection:bg-white selection:text-primary-500'
 	},
@@ -100,6 +101,7 @@ const theme: Record<string, Record<string, string>> = {
 	Img: { default: '' },
 	Input: { default: twMerge(input), light: 'dark:bg-white dark:text-slate-950' },
 	Nav: { default: '' },
+	Option: { default: '' },
 	P: { default: '' },
 	Section: {
 		default: 'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32',
