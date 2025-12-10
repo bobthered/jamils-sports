@@ -136,7 +136,7 @@
 			<Div class="flex flex-col space-y-6 lg:grid lg:grid-cols-3 lg:gap-6 lg:space-y-0">
 				{#each featuredGames as { date, headerClasses, team1, team2 }}
 					<Card
-						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105"
+						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105 hover:shadow-xl"
 					>
 						<Div class={twMerge('bg-linear-to-r px-6 py-3 text-left text-white', headerClasses)}>
 							{date}
@@ -168,7 +168,7 @@
 			>
 				{#each teams as { href, imageSrc, losses, name, wins }}
 					<Card
-						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105"
+						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105 hover:shadow-xl"
 					>
 						<Img alt={name} class="h-40 w-full object-cover lg:h-56" src={imageSrc} />
 						<Div class="flex flex-col space-y-3 p-6 text-left dark:bg-gray-800">
@@ -228,7 +228,7 @@
 			>
 				{#each news as { body, date, href, imageSrc, title }}
 					<Card
-						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105"
+						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105 hover:shadow-xl"
 					>
 						<Img alt={title} class="h-40 w-full object-cover lg:h-56" src={imageSrc} />
 						<Div class="flex grow flex-col space-y-3 p-6 text-left dark:bg-gray-800">

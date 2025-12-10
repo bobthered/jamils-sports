@@ -68,7 +68,7 @@ const theme: Record<string, Record<string, string>> = {
 	},
 	Footer: {
 		default:
-			'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32 bg-gray-950 text-gray-50 dark:bg-gray-50 dark:bg-text-950'
+			'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32 bg-gray-950 text-gray-50 dark:bg-gray-50 dark:text-gray-950'
 	},
 	Form: {
 		default: ''

@@ -72,11 +72,12 @@
 		'Player News'
 	]);
 	const tagClasses: Record<string, string> = $state({
-		Analysis: 'bg-green-500/10 text-green-500',
-		Announcements: 'bg-red-500/10 text-red-500',
-		Interviews: 'bg-pink-500/10 text-pink-500',
-		'Game Recaps': 'bg-blue-500/10 text-blue-500',
-		'Player News': 'bg-purple-500/10 text-purple-500'
+		Analysis: 'bg-green-500/10 text-green-500 selection:bg-green-500 selection:text-green-500/10',
+		Announcements: 'bg-red-500/10 text-red-500 selection:bg-red-500 selection:text-red-500/10',
+		Interviews: 'bg-pink-500/10 text-pink-500 selection:bg-pink-500 selection:text-pink-500/10',
+		'Game Recaps': 'bg-blue-500/10 text-blue-500 selection:bg-blue-500 selection:text-blue-500/10',
+		'Player News':
+			'bg-purple-500/10 text-purple-500 selection:bg-purple-500 selection:text-purple-500/10'
 	});
 
 	// $derived
@@ -104,7 +105,9 @@
 
 <Section>
 	<Container>
-		<Card class="relative flex flex-col overflow-hidden p-0 lg:grid lg:grid-cols-2">
+		<Card
+			class="relative flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105 hover:shadow-xl lg:grid lg:grid-cols-2"
+		>
 			<Img
 				alt={featuredArticle.title}
 				class="h-56 w-full object-cover lg:h-auto"
@@ -154,7 +157,7 @@
 					<H2 class={theme.getComponentVariant('H5', 'default')}>Latest Articles</H2>
 					{#each latestArticles as { body, date, href, imageSrc, tags, title }}
 						<Card
-							class="overflow-hidden p-0 lg:flex"
+							class="scale-100 overflow-hidden p-0 transition duration-200 hover:scale-105 hover:shadow-xl lg:flex"
 							isVisible={tags.includes(filter) || filter === 'All'}
 							transition={slide}
 						>
