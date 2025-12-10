@@ -37,6 +37,9 @@ const theme: Record<string, Record<string, string>> = {
 	Div: {
 		default: ''
 	},
+	Footer: {
+		default: ''
+	},
 	H1: {
 		default: 'text-6xl font-semibold'
 	},
