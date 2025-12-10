@@ -1,16 +1,19 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
-	import { type HTMLAttributes } from 'svelte/elements';
+	import { type HTMLSelectAttributes } from 'svelte/elements';
 	import { twMerge } from 'tailwind-merge';
 	import { theme } from '$lib/theme';
+	import { Option } from '..';
 
-	type Props = HTMLAttributes<HTMLElement> & {
+	type Props = HTMLSelectAttributes & {
 		children?: Snippet;
 		class?: string;
 		clientHeight?: number;
 		clientWidth?: number;
-		element?: HTMLElement | null;
+		element?: HTMLSelectElement | null;
 		isVisible?: boolean;
+		option?: Snippet<[{ label: any; value: any }]>;
+		options?: { label: any; value: any }[];
 		offsetHeight?: number;
 		offsetWidth?: number;
 		transition?: (node: Element, options?: Record<string, any>) => any;
@@ -24,33 +27,45 @@
 		clientWidth = $bindable(0),
 		element = $bindable(null),
 		isVisible = $bindable(true),
+		option,
+		options = [],
 		offsetHeight = $bindable(0),
 		offsetWidth = $bindable(0),
 		transition: customTransition = (_) => {},
-		value,
+		value = $bindable(''),
 		variants = [],
 		...restProps
 	}: Props = $props();
 </script>
 
 {#if isVisible}
-	<option
+	<select
 		{...restProps}
 		bind:clientHeight
 		bind:clientWidth
 		bind:offsetHeight
 		bind:offsetWidth
 		bind:this={element}
+		bind:value
 		class={twMerge(
-			theme.getComponentVariant('Option', 'default'),
-			...variants.map((variant: string) => theme.getComponentVariant('Option', variant)),
+			theme.getComponentVariant('Select', 'default'),
+			...variants.map((variant: string) => theme.getComponentVariant('Select', variant)),
 			className
 		)}
 		transition:customTransition
-		{value}
 	>
 		{#if children}
 			{@render children()}
+		{:else}
+			{#each options as { label, value: optionValue }}
+				{#if option}
+					{@render option({ label, value: optionValue })}
+				{:else}
+					<Option value={optionValue}>
+						{label}
+					</Option>
+				{/if}
+			{/each}
 		{/if}
-	</option>
+	</select>
 {/if}
