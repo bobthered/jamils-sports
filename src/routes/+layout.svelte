@@ -79,28 +79,31 @@
 {@render children()}
 <Footer>
 	<Container>
-		<Div class="flex flex-col space-y-6 md:grid md:grid-cols-3 md:gap-6 md:space-y-0">
-			<Div class="flex flex-col space-y-3">
-				<A class="-ml-6" href="/" variants={['buttonDefault', 'buttonGhost']}>Logo</A>
-				<Div class="opacity-70">Building champions on and off the court since 2025</Div>
-			</Div>
-			<Div class="flex flex-col space-y-3">
-				<H6>Quick Links</H6>
-				<Div class="flex flex-col opacity-70">
-					{#each navItems as { href, label }}
-						<A class="text-current" {href}>{label}</A>
-					{/each}
+		<Div class="flex flex-col divide-y divide-gray-50/10 dark:divide-gray-950/10">
+			<Div class="flex flex-col space-y-6 py-6 md:grid md:grid-cols-3 md:gap-6 md:space-y-0">
+				<Div class="flex flex-col space-y-3">
+					<A class="-ml-6" href="/" variants={['buttonDefault', 'buttonGhost']}>Logo</A>
+					<Div class="opacity-70">Building champions on and off the court since 2025</Div>
+				</Div>
+				<Div class="flex flex-col space-y-3">
+					<H6>Quick Links</H6>
+					<Div class="flex flex-col opacity-70">
+						{#each navItems as { href, label }}
+							<A class="text-current" {href}>{label}</A>
+						{/each}
+					</Div>
+				</Div>
+				<Div class="flex flex-col space-y-3">
+					<H6>Contact</H6>
+					<Div class="grid grid-cols-[fit-content(0px)_1fr] gap-x-2 gap-y-4 opacity-70">
+						<Phone />
+						<Div>(555) 123-4567</Div>
+						<Mail />
+						<A class="text-current" href="mailto:info@jamilsleague.com">info@jamilsleague.com</A>
+					</Div>
 				</Div>
 			</Div>
-			<Div class="flex flex-col space-y-3">
-				<H6>Contact</H6>
-				<Div class="grid grid-cols-[fit-content(0px)_1fr] gap-x-2 gap-y-4 opacity-70">
-					<Phone />
-					<Div>(555) 123-4567</Div>
-					<Mail />
-					<A class="text-current" href="mailto:info@jamilsleague.com">info@jamilsleague.com</A>
-				</Div>
-			</Div>
+			<Div class="py-6 text-center opacity-70">© 2025 Jamil's League. All rights reserved.</Div>
 		</Div>
 	</Container>
 </Footer>
