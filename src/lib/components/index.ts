@@ -8,6 +8,7 @@ export { default as H1 } from './H1/H1.svelte';
 export { default as H2 } from './H2/H2.svelte';
 export { default as H3 } from './H3/H3.svelte';
 export { default as H4 } from './H4/H4.svelte';
+export { default as H5 } from './H5/H5.svelte';
 export { default as Header } from './Header/Header.svelte';
 export { default as Img } from './Img/Img.svelte';
 export { default as Nav } from './Nav/Nav.svelte';
