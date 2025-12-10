@@ -54,10 +54,12 @@ const theme: Record<string, Record<string, string>> = {
 		square: 'rounded-none'
 	},
 	Card: {
+		blueToPurple:
+			'bg-linear-to-br from-blue-500 to-purple-500 selection:bg-white selection:text-blue-500',
 		default: twMerge(rounded, shadow, 'bg-white dark:bg-gray-900 p-6'),
 		light: 'dark:bg-white dark:text-slate-950',
 		orangeToRed:
-			'bg-linear-to-br from-primary-500 to-red-500 selection:bg-white selection:text-primary-500'
+			'bg-linear-to-br from-orange-500 to-red-500 selection:bg-white selection:text-orange-500'
 	},
 	Container: {
 		default: twMerge(padding.input.x, 'mx-auto w-full max-w-7xl'),
