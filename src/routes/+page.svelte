@@ -156,16 +156,16 @@
 	</Container>
 </Section>
 
-<Section class="text-center">
+<Section>
 	<Container>
 		<Div class="flex flex-col space-y-12">
-			<H2>League Standings</H2>
-			<Card class="overflow-hidden p-0">
+			<H2 class="text-center">League Standings</H2>
+			<Card class="relative overflow-auto p-0">
 				<Table class="w-full">
 					<Thead>
 						<Tr>
 							<Th>Rank</Th>
-							<Th>Team</Th>
+							<Th class="sticky left-0 text-left">Team</Th>
 							<Th>W</Th>
 							<Th>L</Th>
 							<Th>PCT</Th>
@@ -175,12 +175,12 @@
 					<Tbody>
 						{#each teams as { losses, name, wins }, index}
 							<Tr>
-								<Td>{index + 1}</Td>
-								<Td>{name}</Td>
-								<Td>{wins}</Td>
-								<Td>{losses}</Td>
-								<Td>{(wins / (losses + wins)).toFixed(3)}</Td>
-								<Td>{(12 - wins).toFixed(1)}</Td>
+								<Td class="text-center">{index + 1}</Td>
+								<Td class="sticky left-0">{name}</Td>
+								<Td class="text-center">{wins}</Td>
+								<Td class="text-center">{losses}</Td>
+								<Td class="text-center">{(wins / (losses + wins)).toFixed(3)}</Td>
+								<Td class="text-center">{(12 - wins).toFixed(1)}</Td>
 							</Tr>
 						{/each}
 					</Tbody>

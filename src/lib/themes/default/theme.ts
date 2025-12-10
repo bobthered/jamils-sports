@@ -1,6 +1,12 @@
 import { twMerge } from 'tailwind-merge';
 
 const backdropBlur = 'backdrop-blur';
+const padding = {
+	input: {
+		x: 'px-6',
+		y: 'py-3'
+	}
+};
 const rounded = 'rounded';
 const shadow = 'shadow';
 
@@ -10,8 +16,10 @@ const theme: Record<string, Record<string, string>> = {
 	},
 	Button: {
 		default: twMerge(
+			padding.input.x,
+			padding.input.y,
 			rounded,
-			'px-6 py-3 bg-primary-500 text-white hover:bg-primary-600 focus:bg-primary-700 transition duration-200'
+			'bg-primary-500 text-white hover:bg-primary-600 focus:bg-primary-700 transition duration-200'
 		),
 		ghost:
 			'bg-transparent text-current hover:bg-black/10 focus:bg-black/10 dark:hover:bg-white/10 focus:bg-white/10',
@@ -23,7 +31,7 @@ const theme: Record<string, Record<string, string>> = {
 		default: twMerge(rounded, shadow, 'bg-white dark:bg-gray-900 p-6')
 	},
 	Container: {
-		default: 'mx-auto w-full max-w-7xl px-6',
+		default: twMerge(padding.input.x, 'mx-auto w-full max-w-7xl'),
 		full: 'max-w-none'
 	},
 	Div: {
@@ -56,16 +64,21 @@ const theme: Record<string, Record<string, string>> = {
 		default: ''
 	},
 	Td: {
-		default: ''
+		default: twMerge(padding.input.x, padding.input.y)
 	},
 	Th: {
-		default: ''
+		default: twMerge(
+			padding.input.x,
+			padding.input.y,
+			'bg-gray-950 text-gray-50 dark:bg-gray-50 dark:text-gray-950'
+		)
 	},
 	Thead: {
 		default: ''
 	},
 	Tr: {
-		default: ''
+		default:
+			'transition duration-200 bg-transparent [&>td]:transition [&>td]:duration-200 [&>td]:bg-white even:[&>td]:bg-gray-100 dark:[&>td]:bg-gray-950 dark:even:[&>td]:bg-gray-900 hover:[&>td]:bg-primary-500/10 even:hover:[&>td]:bg-primary-500/10'
 	}
 };
 
