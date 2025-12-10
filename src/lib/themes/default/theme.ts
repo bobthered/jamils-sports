@@ -14,7 +14,7 @@ const padding = {
 };
 const ring = {
 	input: twMerge(
-		'inset-ring inset-ring-gray-950/30 dark:inset-ring-gray-50/30 hover:inset-ring-primary-500 focus:inset-ring-primary-500',
+		'inset-ring inset-ring-gray-950/30 dark:inset-ring-gray-50/15 hover:inset-ring-primary-500 focus:inset-ring-primary-500',
 		'ring-2 ring-transparent focus:ring-primary-500/30'
 	)
 };
@@ -39,12 +39,13 @@ const theme: Record<string, Record<string, string>> = {
 		default: 'text-primary-500'
 	},
 	Button: {
-		contrast: 'bg-gray-950 text-gray-50 dark:bg-gray-50 dark:text-gray-950',
+		contrast:
+			'bg-gray-950 text-gray-50 hover:bg-gray-900 focus:bg-gray-900 hover:text-gray-50 focus:text-gray-50 dark:bg-gray-50 dark:text-gray-950 dark:hover:bg-gray-100 dark:focus:bg-gray-100 dark:hover:text-gray-950 dark:focus:text-gray-950',
 		default: twMerge(
 			padding.input.x,
 			padding.input.y,
 			rounded,
-			'bg-primary-500 text-white hover:bg-primary-600 focus:bg-primary-700 transition duration-200'
+			'bg-primary-500 cursor-pointer text-white hover:bg-primary-600 focus:bg-primary-700 transition duration-200'
 		),
 		ghost:
 			'bg-transparent text-current hover:bg-black/10 focus:bg-black/10 dark:hover:bg-white/10 focus:bg-white/10',
@@ -53,7 +54,9 @@ const theme: Record<string, Record<string, string>> = {
 		square: 'rounded-none'
 	},
 	Card: {
-		default: twMerge(rounded, shadow, 'bg-white dark:bg-gray-900 p-6')
+		default: twMerge(rounded, shadow, 'bg-white dark:bg-gray-900 p-6'),
+		orangeToRed:
+			'bg-linear-to-br from-primary-500 to-red-500 selection:bg-white selection:text-primary-500'
 	},
 	Container: {
 		default: twMerge(padding.input.x, 'mx-auto w-full max-w-7xl'),
@@ -65,6 +68,9 @@ const theme: Record<string, Record<string, string>> = {
 	Footer: {
 		default:
 			'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32 bg-gray-950 text-gray-50 dark:bg-gray-50 dark:bg-text-950'
+	},
+	Form: {
+		default: ''
 	},
 	H1: {
 		default: 'text-6xl font-semibold'
@@ -92,7 +98,7 @@ const theme: Record<string, Record<string, string>> = {
 		)
 	},
 	Img: { default: '' },
-	Input: { default: twMerge(input) },
+	Input: { default: twMerge(input), light: 'dark:bg-white dark:text-slate-950' },
 	Nav: { default: '' },
 	P: { default: '' },
 	Section: {
