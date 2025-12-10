@@ -1,20 +1,45 @@
 import { twMerge } from 'tailwind-merge';
 
 const backdropBlur = 'backdrop-blur';
+const background = {
+	input: 'bg-white dark:bg-gray-900'
+};
+const duration = 'duration-200';
+const outline = 'outline-none';
 const padding = {
 	input: {
 		x: 'px-6',
 		y: 'py-3'
 	}
 };
+const ring = {
+	input: twMerge(
+		'inset-ring inset-ring-gray-950/30 dark:inset-ring-gray-50/30 hover:inset-ring-primary-500 focus:inset-ring-primary-500',
+		'ring-2 ring-transparent focus:ring-primary-500/30'
+	)
+};
 const rounded = 'rounded';
 const shadow = 'shadow';
+const transition = 'transition';
+
+const input = twMerge(
+	background.input,
+	duration,
+	outline,
+	padding.input.x,
+	padding.input.y,
+	ring.input,
+	rounded,
+	shadow,
+	transition
+);
 
 const theme: Record<string, Record<string, string>> = {
 	A: {
 		default: 'text-primary-500'
 	},
 	Button: {
+		contrast: 'bg-gray-950 text-gray-50 dark:bg-gray-50 dark:text-gray-950',
 		default: twMerge(
 			padding.input.x,
 			padding.input.y,
@@ -38,7 +63,8 @@ const theme: Record<string, Record<string, string>> = {
 		default: ''
 	},
 	Footer: {
-		default: 'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32'
+		default:
+			'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32 bg-gray-950 text-gray-50 dark:bg-gray-50 dark:bg-text-950'
 	},
 	H1: {
 		default: 'text-6xl font-semibold'
@@ -66,6 +92,7 @@ const theme: Record<string, Record<string, string>> = {
 		)
 	},
 	Img: { default: '' },
+	Input: { default: twMerge(input) },
 	Nav: { default: '' },
 	P: { default: '' },
 	Section: {

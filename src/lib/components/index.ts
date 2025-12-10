@@ -12,6 +12,7 @@ export { default as H5 } from './H5/H5.svelte';
 export { default as H6 } from './H6/H6.svelte';
 export { default as Header } from './Header/Header.svelte';
 export { default as Img } from './Img/Img.svelte';
+export { default as Input } from './Input/Input.svelte';
 export { default as Nav } from './Nav/Nav.svelte';
 export { default as P } from './P/P.svelte';
 export { default as Section } from './Section/Section.svelte';

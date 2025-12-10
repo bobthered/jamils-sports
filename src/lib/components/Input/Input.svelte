@@ -1,0 +1,49 @@
+<script lang="ts">
+	import { type Snippet } from 'svelte';
+	import { type HTMLInputAttributes } from 'svelte/elements';
+	import { twMerge } from 'tailwind-merge';
+	import { theme } from '$lib/theme';
+
+	type Props = HTMLInputAttributes & {
+		children?: Snippet;
+		class?: string;
+		clientHeight?: number;
+		clientWidth?: number;
+		element?: HTMLInputElement | null;
+		isVisible?: boolean;
+		offsetHeight?: number;
+		offsetWidth?: number;
+		transition?: (node: Element, options?: Record<string, any>) => any;
+		variants?: string[];
+	};
+	let {
+		children,
+		class: className,
+		clientHeight = $bindable(0),
+		clientWidth = $bindable(0),
+		element = $bindable(null),
+		isVisible = $bindable(true),
+		offsetHeight = $bindable(0),
+		offsetWidth = $bindable(0),
+		transition: customTransition = (_) => {},
+		variants = [],
+		...restProps
+	}: Props = $props();
+</script>
+
+{#if isVisible}
+	<input
+		{...restProps}
+		bind:clientHeight
+		bind:clientWidth
+		bind:offsetHeight
+		bind:offsetWidth
+		bind:this={element}
+		class={twMerge(
+			theme.getComponentVariant('Input', 'default'),
+			...variants.map((variant: string) => theme.getComponentVariant('Input', variant)),
+			className
+		)}
+		transition:customTransition
+	/>
+{/if}
