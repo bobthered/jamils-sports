@@ -51,6 +51,9 @@ const theme: Record<string, Record<string, string>> = {
 	},
 	Table: {
 		default: ''
+	},
+	Thead: {
+		default: ''
 	}
 };
 
