@@ -46,6 +46,9 @@ const theme: Record<string, Record<string, string>> = {
 	H2: {
 		default: 'text-5xl font-semibold'
 	},
+	H3: {
+		default: 'text-4xl font-semibold'
+	},
 	Header: {
 		default: twMerge(
 			backdropBlur,
