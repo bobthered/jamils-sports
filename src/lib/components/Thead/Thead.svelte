@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
-	import { type HTMLTableAttributes } from 'svelte/elements';
+	import { type HTMLAttributes } from 'svelte/elements';
 	import { twMerge } from 'tailwind-merge';
 	import { theme } from '$lib/theme';
 
-	type Props = HTMLTableAttributes & {
+	type Props = HTMLAttributes<HTMLElement> & {
 		children?: Snippet;
 		class?: string;
 		clientHeight?: number;
 		clientWidth?: number;
-		element?: HTMLTableElement | null;
+		element?: HTMLElement | null;
 		isVisible?: boolean;
 		offsetHeight?: number;
 		offsetWidth?: number;
@@ -32,7 +32,7 @@
 </script>
 
 {#if isVisible}
-	<table
+	<thead
 		{...restProps}
 		bind:clientHeight
 		bind:clientWidth
@@ -40,8 +40,8 @@
 		bind:offsetWidth
 		bind:this={element}
 		class={twMerge(
-			theme.getComponentVariant('Table', 'default'),
-			...variants.map((variant: string) => theme.getComponentVariant('Table', variant)),
+			theme.getComponentVariant('Thead', 'default'),
+			...variants.map((variant: string) => theme.getComponentVariant('Thead', variant)),
 			className
 		)}
 		transition:customTransition
@@ -49,5 +49,5 @@
 		{#if children}
 			{@render children()}
 		{/if}
-	</table>
+	</thead>
 {/if}
