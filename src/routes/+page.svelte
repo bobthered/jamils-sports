@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { A, Card, Container, Div, H1, Img, P, Section } from '$lib/components';
+	import { A, Card, Container, Div, H1, Img, P, Section, Table, Thead, Tr } from '$lib/components';
 	import H2 from '$lib/components/H2/H2.svelte';
 	import { theme } from '$lib/theme';
 	import { twMerge } from 'tailwind-merge';
@@ -145,6 +145,13 @@
 	<Container>
 		<Div class="flex flex-col space-y-12">
 			<H2>League Standings</H2>
+			<Card class="overflow-hidden p-0">
+				<Table>
+					<Thead>
+						<Tr></Tr>
+					</Thead>
+				</Table>
+			</Card>
 		</Div>
 	</Container>
 </Section>
