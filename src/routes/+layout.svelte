@@ -5,6 +5,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import { A, Button, Container, Div, Footer, H6, Header, Nav } from '$lib/components';
 	import '../app.css';
+	import { page } from '$app/state';
 
 	// $props
 	let { children } = $props();
@@ -53,7 +54,11 @@
 		</Button>
 		<Nav class="flex space-x-1" isVisible={windowOuterWidth >= 768}>
 			{#each navItems as { href, label, variants }}
-				<A class="px-6 py-3" {href} {variants}>{label}</A>
+				<A
+					class={twMerge('px-6 py-3', page.url.pathname === href ? 'text-primary-500' : undefined)}
+					{href}
+					{variants}>{label}</A
+				>
 			{/each}
 			<A class="px-6 py-3" href="/sign-up" variants={['buttonDefault']}>Sign Up</A>
 		</Nav>
