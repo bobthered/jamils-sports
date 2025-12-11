@@ -57,6 +57,8 @@ const theme: Record<string, Record<string, string>> = {
 		blueToPurple:
 			'bg-linear-to-br from-blue-500 to-purple-500 selection:bg-white selection:text-blue-500',
 		default: twMerge(rounded, shadow, 'bg-white dark:bg-gray-900 p-6'),
+		greenToTeal:
+			'bg-linear-to-br from-green-500 to-teal-500 selection:bg-white selection:text-green-500',
 		light: 'dark:bg-white dark:text-slate-950',
 		orangeToRed:
 			'bg-linear-to-br from-orange-500 to-red-500 selection:bg-white selection:text-orange-500'
@@ -106,6 +108,7 @@ const theme: Record<string, Record<string, string>> = {
 	Option: { default: '' },
 	P: { default: '' },
 	Section: {
+		min: 'py-0 sm:py-0 md:py-0 lg:py-0 xl:py-0',
 		default: 'py-24 sm:py-26 md:py-28 lg:py-30 xl:py-32',
 		lg: 'py-24 sm:py-32 md:py-40 lg:py-48 xl:py-56'
 	},

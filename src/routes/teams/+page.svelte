@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { A, Card, Container, Div, Img, Section } from '$lib/components';
-	import { theme } from '$lib/theme';
 	import { twMerge } from 'tailwind-merge';
+	import { A, Card, Container, Div, Img, Section } from '$lib/components';
+	import { findTeams } from '$lib/remoteFunctions/findTeams.remote';
+	import { theme } from '$lib/theme';
 
 	// helpers
 	const getOrdinalSuffix = (number: number) => {
@@ -17,105 +18,73 @@
 		other: 'th'
 	};
 	const pluralRules = new Intl.PluralRules('default', { type: 'ordinal' });
+	const updateTeams = async () => {
+		const results = await findTeams();
+		remoteStatus = 'fulfilled';
+		teams = results;
+	};
 
 	// $state
-	const teams = $state(
-		[
-			{
-				imageSrc:
-					'https://images.pexels.com/photos/71103/basketball-sports-teams-players-71103.jpeg',
-				losses: 3,
-				name: 'Thunder',
-				wins: 12
-			},
-			{
-				imageSrc: 'https://images.pexels.com/photos/974502/pexels-photo-974502.jpeg',
-				losses: 4,
-				name: 'Warriors',
-				wins: 11
-			},
-			{
-				imageSrc: 'https://images.pexels.com/photos/974501/pexels-photo-974501.jpeg',
-				losses: 5,
-				name: 'Hawks',
-				wins: 10
-			},
-			{
-				imageSrc: 'https://images.pexels.com/photos/3755445/pexels-photo-3755445.jpeg',
-				losses: 6,
-				name: 'Eagles',
-				wins: 9
-			},
-			{
-				imageSrc: 'https://images.pexels.com/photos/5586480/pexels-photo-5586480.jpeg',
-				losses: 8,
-				name: 'Blazers',
-				wins: 7
-			},
-			{
-				imageSrc: 'https://images.pexels.com/photos/8979937/pexels-photo-8979937.jpeg',
-				losses: 10,
-				name: 'Rockets',
-				wins: 5
-			}
-		].map(({ imageSrc, losses, name, wins }, index) => {
-			const href = `/teams/${name.toLowerCase()}`;
-			const pf = 1612 + Math.floor(Math.random() * wins * 40);
-			const pa = 1612 + Math.floor(Math.random() * losses * 40);
-			const rank = index + 1;
-			let streak = Math.floor(Math.random() * wins) - Math.floor(Math.random() * losses);
-			if (streak === 0) streak = 1;
-			return { href, imageSrc, losses, name, pa, pf, rank, streak, wins };
-		})
-	);
+	let remoteStatus: 'loading' | 'fulfilled' = $state('loading');
+	let teams: Awaited<ReturnType<typeof findTeams>> = $state([]);
+
+	// $effects
+	$effect(() => {
+		updateTeams();
+	});
 </script>
 
 <Section>
 	<Container>
 		<Div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-			{#each teams as { href, imageSrc, losses, name, pa, pf, streak, wins }, index}
-				<Card
-					class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105 hover:shadow-xl"
-				>
-					<Img alt={name} class="h-48 w-full object-cover sm:h-48" src={imageSrc} />
-					<Div class="flex flex-col space-y-6 p-6">
-						<Div class="flex items-center justify-between">
-							<Div class={twMerge(theme.getComponentVariant('H4', 'default'))}>{name}</Div>
-							<Div class="rounded-full bg-green-500/10 px-3 py-1 text-green-500"
-								>{getOrdinalSuffix(index + 1)}</Div
-							>
-						</Div>
-						<Div class="grid grid-cols-3 gap-6">
-							<Div class="flex flex-col items-center">
-								<Div class={twMerge(theme.getComponentVariant('H5', 'default'))}>{wins}</Div>
-								<Div class="text-sm opacity-70">Wins</Div>
-							</Div>
-							<Div class="flex flex-col items-center">
-								<Div class={twMerge(theme.getComponentVariant('H5', 'default'))}>{losses}</Div>
-								<Div class="text-sm opacity-70">Losses</Div>
-							</Div>
-							<Div class="flex flex-col items-center">
-								<Div class={twMerge(theme.getComponentVariant('H5', 'default'))}
-									>{(wins / (wins + losses)).toFixed(3)}</Div
+			{#if remoteStatus === 'loading'}
+				<Card>Loading</Card>
+			{:else}
+				{#each teams as { href, imageSrc, losses, name, pa, pf, streak, wins }, index}
+					<Card
+						class="flex scale-100 flex-col overflow-hidden p-0 transition duration-200 hover:scale-105 hover:shadow-xl"
+					>
+						<Img alt={name} class="h-48 w-full object-cover sm:h-48" src={imageSrc} />
+						<Div class="flex flex-col space-y-6 p-6">
+							<Div class="flex items-center justify-between">
+								<Div class={twMerge(theme.getComponentVariant('H4', 'default'))}>{name}</Div>
+								<Div class="rounded-full bg-green-500/10 px-3 py-1 text-green-500"
+									>{getOrdinalSuffix(index + 1)}</Div
 								>
-								<Div class="text-sm opacity-70">PCT</Div>
 							</Div>
-						</Div>
-						<Div class="flex items-center justify-between">
-							<Div class="text-sm opacity-70">Current Streak:</Div>
-							<Div
-								class={twMerge(
-									'rounded-full px-3 py-1',
-									streak > 0 ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
-								)}>{streak > 0 ? 'W' : 'L'}{Math.abs(streak)}</Div
+							<Div class="grid grid-cols-3 gap-6">
+								<Div class="flex flex-col items-center">
+									<Div class={twMerge(theme.getComponentVariant('H5', 'default'))}>{wins}</Div>
+									<Div class="text-sm opacity-70">Wins</Div>
+								</Div>
+								<Div class="flex flex-col items-center">
+									<Div class={twMerge(theme.getComponentVariant('H5', 'default'))}>{losses}</Div>
+									<Div class="text-sm opacity-70">Losses</Div>
+								</Div>
+								<Div class="flex flex-col items-center">
+									<Div class={twMerge(theme.getComponentVariant('H5', 'default'))}
+										>{(wins / (wins + losses)).toFixed(3)}</Div
+									>
+									<Div class="text-sm opacity-70">PCT</Div>
+								</Div>
+							</Div>
+							<Div class="flex items-center justify-between">
+								<Div class="text-sm opacity-70">Current Streak:</Div>
+								<Div
+									class={twMerge(
+										'rounded-full px-3 py-1',
+										streak > 0 ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+									)}>{streak > 0 ? 'W' : 'L'}{Math.abs(streak)}</Div
+								>
+							</Div>
+							<A
+								class={twMerge(theme.getComponentVariant('Button', 'default'), 'text-center')}
+								{href}>View Team Profile</A
 							>
 						</Div>
-						<A class={twMerge(theme.getComponentVariant('Button', 'default'), 'text-center')} {href}
-							>View Team Profile</A
-						>
-					</Div>
-				</Card>
-			{/each}
+					</Card>
+				{/each}
+			{/if}
 		</Div>
 	</Container>
 </Section>

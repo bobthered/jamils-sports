@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
-	import { type HTMLAttributes } from 'svelte/elements';
+	import { type HTMLTdAttributes } from 'svelte/elements';
 	import { twMerge } from 'tailwind-merge';
 	import { theme } from '$lib/theme';
 
-	type Props = HTMLAttributes<HTMLElement> & {
+	type Props = HTMLTdAttributes & {
 		children?: Snippet;
 		class?: string;
 		clientHeight?: number;
 		clientWidth?: number;
-		element?: HTMLElement | null;
+		element?: HTMLTableCellElement | null;
 		isVisible?: boolean;
 		offsetHeight?: number;
 		offsetWidth?: number;

@@ -10,7 +10,10 @@ const config: Config = {
 		}
 	},
 	extensions: ['.svelte', '.svx'],
-	preprocess: [vitePreprocess(), mdsvex()],
+	preprocess: [
+		vitePreprocess()
+		//, mdsvex()
+	],
 	kit: { adapter: adapter(), experimental: { remoteFunctions: true } }
 };
 
