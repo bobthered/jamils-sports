@@ -134,7 +134,7 @@ const theme: Record<string, Record<string, string>> = {
 	},
 	Tr: {
 		default:
-			'transition duration-200 bg-transparent [&>td]:transition [&>td]:duration-200 [&>td]:bg-white even:[&>td]:bg-gray-100 dark:[&>td]:bg-gray-950 dark:even:[&>td]:bg-gray-900 hover:[&>td]:bg-primary-500/10 even:hover:[&>td]:bg-primary-500/10'
+			'transition duration-200 bg-transparent [&>td]:transition [&>td]:duration-200 [&>td]:bg-white even:[&>td]:bg-gray-100 dark:[&>td]:bg-gray-950 dark:even:[&>td]:bg-gray-900 hover:[&>td]:bg-primary-50 even:hover:[&>td]:bg-primary-50 dark:hover:[&>td]:bg-primary-950 dark:even:hover:[&>td]:bg-primary-950'
 	}
 };
 
